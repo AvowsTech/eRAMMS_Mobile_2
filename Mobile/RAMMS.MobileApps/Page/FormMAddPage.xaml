@@ -1,0 +1,1661 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              Title="Form M"
+                          xmlns:custom="clr-namespace:RAMMS.MobileApps.Controls"
+
+             xmlns:forms="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+             xmlns:page="clr-namespace:RAMMS.MobileApps.Page"
+             xmlns:local="clr-namespace:RAMMS.MobileApps"
+             xmlns:locals="clr-namespace:RAMMS.MobileApps.Controls;assembly=RAMMS.MobileApps"
+             x:Class="RAMMS.MobileApps.Page.FormMAddPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:NegateBoolConverter x:Key="NegatebooleanConverter" />
+            <page:C1C2ImageSrcConverter x:Key="C1C2ImageSrcConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Frame Margin="0,0,0,0" HasShadow="True" BorderColor="#e6e6e6">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="JKRSLogo.png" Grid.Row="0" Grid.Column="0" Margin="0,-10,0,0"/>
+                    <Label Text="ROAD ASSET MANAGEMENT AND MAINTENANCE SYSTEM" LineBreakMode="TailTruncation" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold" FontSize="Large" Grid.Row="0" Grid.Column="2"  Margin="0,-10,0,0"/>
+                    <Image Source="ECSBLogo.png" Grid.Row="0" Grid.Column="4"  Margin="0,-10,0,0"/>
+
+
+                </Grid>
+            </Frame>
+            <StackLayout>
+                <Frame>
+                    <StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="Auto"/>
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="2"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                <Label   Text="Form M No" FontSize="Large"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                                <locals:FrameRenders  BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="3"  ColorName="LightGray"    BorderColor="Black" >
+                                    <Label   Text="{Binding SelectedRefNo}" FontSize="Large"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+                                </locals:FrameRenders>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <ScrollView>
+                <StackLayout >
+
+                    <Frame  BackgroundColor="White" BorderColor="#bfbfbf" CornerRadius="5"  Margin="5,0,5,0"  >
+                        <StackLayout>
+                            <Grid RowSpacing="15" ColumnSpacing="9" IsVisible="{Binding FromAdd}"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+
+                                <Label Text="Division" Grid.Row="0" Grid.Column="1"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+                                <locals:FrameRenders Grid.Row="1"  Grid.Column="1" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:ExtendedPicker ItemsSource="{Binding DDDivisionListItems}" ItemDisplayBinding="{Binding Text}" SelectedIndex="{Binding SelectedDivision, Mode=TwoWay}"  IsEnabled="{Binding IsHeaderEnable}" CharacterSpacing="20"  Title="Select Division"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"  HorizontalOptions="FillAndExpand" TextColor="Black" />
+                                </locals:FrameRenders>
+
+
+
+
+
+                                <Label Text="RMU" Grid.Row="0" Grid.Column="2"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                                <locals:FrameRenders Grid.Row="1"  Grid.Column="2" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:ExtendedPicker ItemsSource="{Binding DDRMUListItems}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedRMU, Mode=TwoWay}" IsEnabled="{Binding IsHeaderEnable}" Title="Select RMU"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"   HorizontalOptions="FillAndExpand" TextColor="Black" />
+                                </locals:FrameRenders>
+
+
+                                <Label Text="Section Code"  Grid.Row="0" Grid.Column="3"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                                <locals:FrameRenders Grid.Row="1"  Grid.Column="3" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:ExtendedPicker ItemsSource="{Binding DDSectionListItems}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedSectionCode, Mode=TwoWay}" IsEnabled="{Binding IsHeaderEnable}" Title="Select Section Code"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"   HorizontalOptions="FillAndExpand" TextColor="Black" />
+                                </locals:FrameRenders>
+
+
+                                <Label Text="Section Name" Grid.Row="0" Grid.Column="4"  FontSize="Medium"   FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+
+                                <locals:FrameRenders Grid.Row="1"  Grid.Column="4" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:EntryControl  IsEnabled="{Binding IsHeaderEnable}" Text="{Binding SelectedSectionName}" FontAttributes="Bold" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default" />
+                                </locals:FrameRenders>
+
+                                <Label Text="Road Code" Grid.Row="2" Grid.Column="1"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+
+                                <locals:FrameRenders Grid.Row="3"  Grid.Column="1" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:ExtendedPicker  ItemsSource="{Binding DDRodeCodeListItems}"  ItemDisplayBinding="{Binding Text}"  SelectedItem="{Binding SelectedRoadCode, Mode=TwoWay}" IsEnabled="{Binding IsHeaderEnable}" Title="Select Road Code"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"    TextColor="Black" />
+                                </locals:FrameRenders>
+
+                                <Label Text="Road Name" Grid.Row="2" Grid.Column="2"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                                <locals:FrameRenders Grid.Row="3"  Grid.Column="2" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:EntryControl IsEnabled="{Binding IsHeaderEnable}" Text="{Binding SelectedRoadName}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default"  InputTransparent="True" />
+                                </locals:FrameRenders>
+
+
+                                <Label Text="Activity Code"  Grid.Row="2" Grid.Column="3"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                                <locals:FrameRenders Grid.Row="3"  Grid.Column="3" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:ExtendedPicker  ItemsSource="{Binding DDActivityListItems}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedActivity, Mode=TwoWay}"  IsEnabled="{Binding IsHeaderEnable}"  Title="Select Activity Code"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"   HorizontalOptions="FillAndExpand" TextColor="Black" />
+                                </locals:FrameRenders>
+
+
+                                <Label Text="Activity Name" Grid.Row="2" Grid.Column="4"  FontSize="Medium"   FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+                                <locals:FrameRenders Grid.Row="3"  Grid.Column="4" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:EntryControl  IsEnabled="{Binding IsHeaderEnable}" Text="{Binding SelectedActivityName}" FontAttributes="Bold" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default" />
+                                </locals:FrameRenders>
+                                
+                                <Label Text="Location CH" Grid.Row="4" Grid.Column="1"  FontSize="Medium"   FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                                <StackLayout HeightRequest="30" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5"  Grid.Column="1" >
+
+                                    <locals:FrameRenders HorizontalOptions="FillAndExpand" Margin="0,0,3,0" HeightRequest="37" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                        <custom:CustomEntryNumeric IsEnabled="{Binding IsHeaderEnable}" Margin="0,0,0,-7" HorizontalOptions="FillAndExpand" MaxLength="5" Text="{Binding LocChKm}" FontAttributes="Bold" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  />
+                                    </locals:FrameRenders>
+                                    <Label  Text="+"  FontSize="Large" FontAttributes="Bold"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" VerticalTextAlignment="Center" />
+
+                                    <locals:FrameRenders HorizontalOptions="FillAndExpand" Margin="3,0,0,0" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                        <custom:CustomEntryNumeric IsEnabled="{Binding IsHeaderEnable}" Margin="0,0,0,-7" HorizontalOptions="FillAndExpand" MaxLength="3"  Text="{Binding LocChM}" FontAttributes="Bold" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  />
+                                    </locals:FrameRenders>
+
+                                </StackLayout>
+
+                                <Label Text="Audit Date" FontSize="Medium" TextColor="Black" Opacity="0.8" Grid.Row="4" Grid.Column="2"    FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+
+                                <locals:FrameRenders Grid.Row="5"  Grid.Column="2" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+
+                                    <local:CustomDatePicker NullText="dd/mm/yyyy" IsEnabled="{Binding IsHeaderEnable}" NullableDate="{Binding AuditedDate}" InputTransparent="{Binding NotToEdit}" Format="dd-MM-yyyy" BackgroundColor="White"   VerticalOptions="CenterAndExpand" FontSize="16"  HorizontalOptions="FillAndExpand" TextColor="Gray"   />
+                                </locals:FrameRenders>
+
+
+
+                                <Label Text="Audit Time From" FontSize="Medium" TextColor="Black" Opacity="0.8" Grid.Row="4" Grid.Column="3"    FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+
+                                <locals:FrameRenders Grid.Row="5"  Grid.Column="3" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <TimePicker x:Name="fAuditftime" IsEnabled="{Binding IsHeaderEnable}" Time="{Binding SavefTime, StringFormat='{}{0:hh\\:mm}', Mode=TwoWay}" TextColor="Gray"/>
+                                </locals:FrameRenders>
+
+                                <Label Text="Audit Time To" FontSize="Medium" TextColor="Black" Opacity="0.8" Grid.Row="4" Grid.Column="4"    FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+
+                                <locals:FrameRenders Grid.Row="5"  Grid.Column="4" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <TimePicker  x:Name="tAuditttime" IsEnabled="{Binding IsHeaderEnable}" Format="hh:mm tt" Time="{Binding SavetTime, Mode=TwoWay}"  TextColor="Gray"/>
+
+                                </locals:FrameRenders>
+                                <Button Grid.Row="6"  IsEnabled="{Binding IsHeaderEnable}"  Grid.Column="4" HorizontalOptions="End" VerticalOptions="End" TextColor="White" Command="{Binding OKCommand}" CornerRadius="10" FontSize="17" BackgroundColor="#1D2D50" Text="Find Details"></Button>
+                            
+                            
+                            </Grid>
+                          
+                            
+                            
+                            <!--<Grid  IsVisible="{Binding FromAdd, Converter={StaticResource NegatebooleanConverter}}" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                --><!--<Label Text="Asset ID"  Grid.Row="0" Grid.Column="0"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                                <locals:FrameRenders Grid.Row="1"  Grid.Column="0" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:EntryControl HeightRequest="40" Text="{Binding AiAssetId}"  IsEnabled="{Binding IsHeaderEnable}"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"  HorizontalOptions="FillAndExpand" TextColor="Black" />
+                                </locals:FrameRenders>
+
+                                <Label Text="Year of Inspection (YYYY)" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="Medium"   FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                                <locals:FrameRenders Grid.Row="1"  Grid.Column="1" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"  BorderColor="Black" >
+                                    <local:ExtendedPicker ItemsSource="{Binding DDYearListItems}" ItemDisplayBinding="{Binding Text}" SelectedIndex="{Binding SelectedYear, Mode=TwoWay}"   IsEnabled="{Binding IsHeaderEnable}" ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"  InputTransparent="{Binding NotToEdit}"  HorizontalOptions="FillAndExpand" TextColor="Gray"/>
+                                </locals:FrameRenders>--><!--
+
+                            </Grid>-->
+                        </StackLayout>
+                    </Frame>
+
+
+                    <Frame  BackgroundColor="White" BorderColor="#bfbfbf" CornerRadius="5"  Margin="5,0,5,0"  >
+                        <StackLayout>
+                            <Grid RowSpacing="15" ColumnSpacing="9"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+
+                                <Label Text="Reference No" Grid.Row="0" Grid.Column="1"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                                <locals:FrameRenders Grid.Row="1"  Grid.Column="1" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:EntryControl  Text="{Binding RefId}" FontAttributes="Bold" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default" />
+                                </locals:FrameRenders>
+
+
+
+
+                                <Label Text="Type" Grid.Row="0" Grid.Column="2"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                                <locals:FrameRenders Grid.Row="1"  Grid.Column="2" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:ExtendedPicker SelectedItem="{Binding SelectedType, Mode=TwoWay}" IsEnabled="{Binding CanSave}" Title="Select Type"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"   HorizontalOptions="FillAndExpand" TextColor="Black">
+                                    <local:ExtendedPicker.Items>
+                                            <x:String>Partial</x:String>
+                                            <x:String>Full Road Closure</x:String>
+                                    </local:ExtendedPicker.Items>
+                                    </local:ExtendedPicker>
+
+                                </locals:FrameRenders>
+
+
+                                <Label Text="Method"  Grid.Row="0" Grid.Column="3"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                                <locals:FrameRenders Grid.Row="1"  Grid.Column="3" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:ExtendedPicker SelectedItem="{Binding SelectedMethod, Mode=TwoWay}" IsEnabled="{Binding CanSave}" Title="Select Method"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"   HorizontalOptions="FillAndExpand" TextColor="Black" >
+                                        <local:ExtendedPicker.Items>
+                                            <x:String>Stop-Go</x:String>
+                                            <x:String>Diversion</x:String>
+                                            <x:String>Others</x:String>
+                                        </local:ExtendedPicker.Items>
+                                    </local:ExtendedPicker>
+                                </locals:FrameRenders>
+
+
+                                <Label Text="Crew Supervisor" Grid.Row="0" Grid.Column="4"  FontSize="Medium"   FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+
+                                
+                                <locals:FrameRenders Grid.Row="1"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:ExtendedPicker ItemsSource="{Binding DDCrewUserListListItems}" ItemDisplayBinding="{Binding Text}" SelectedIndex="{Binding SelectedCrewIndex, Mode=TwoWay}"  IsEnabled="{Binding CanSave}" CharacterSpacing="20"  Title="Select Users"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"  HorizontalOptions="FillAndExpand" TextColor="Black" />
+                                </locals:FrameRenders>
+                                <Label Text="Audit Plan" Grid.Row="2" Grid.Column="1"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+
+                                <locals:FrameRenders Grid.Row="3"  Grid.Column="1" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:ExtendedPicker  SelectedItem="{Binding SelectedAuditplan, Mode=TwoWay}" IsEnabled="{Binding CanSave}" Title="Select"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"    TextColor="Black">
+                                    <local:ExtendedPicker.Items>
+                                            <x:String>Plan</x:String>
+                                            <x:String>Unplanned</x:String>
+                                   </local:ExtendedPicker.Items>
+                                    </local:ExtendedPicker>
+                                </locals:FrameRenders>
+
+                                <Label Text="Audited by" Grid.Row="2" Grid.Column="2"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+
+                               
+
+                                <locals:FrameRenders Grid.Row="3"  Grid.Column="2" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:ExtendedPicker SelectedIndex="{Binding SelectedAuditBy, Mode=TwoWay}"  IsEnabled="{Binding CanSave}"  Title="Select Activity Code"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"   HorizontalOptions="FillAndExpand" TextColor="Black">
+                                    <local:ExtendedPicker.Items>
+                                            <x:String>SJP</x:String>
+                                        <x:String>E.C</x:String>
+                                        <x:String>S.O</x:String>
+                                    </local:ExtendedPicker.Items>
+                                    </local:ExtendedPicker>
+                                </locals:FrameRenders>
+                                
+                                <Label Text="Name of Service(S.P)"  Grid.Row="2" Grid.Column="3"  FontSize="Medium"  FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="#000" />
+
+                              
+                                <locals:FrameRenders Grid.Row="3"  Grid.Column="3" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                    <local:EntryControl IsEnabled="{Binding IsHeaderEnable}" Text="Endaya Construction"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default"  InputTransparent="True" />
+                                </locals:FrameRenders>
+
+                               
+
+                            </Grid>
+
+
+
+                        </StackLayout>
+                    </Frame>
+
+
+
+                    <StackLayout x:Name="stack1" Margin="0,-10,0,0" IsVisible="{Binding IsPhotoTabVisible, Converter={StaticResource NegatebooleanConverter}}">
+                        <StackLayout>
+                            <Frame BorderColor="Gray" CornerRadius="12" BackgroundColor="White" HasShadow="True" Margin="10">
+                                <StackLayout>
+
+                                    <StackLayout >
+                                        <Frame BackgroundColor="#f2f2f2" HasShadow="True" BorderColor="#e6e6e6">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image x:Name="formToggleImage" Source="RoundedAddIcon.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Start" HorizontalOptions="Start">
+                                                </Image>
+                                                <Label Text="Signs" Margin="10,0,0,0" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+
+                                                </Label>
+                                            </StackLayout>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference FormDLayout}"/>
+                                                <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference formToggleImage}"/>
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+
+                                        <Frame x:Name="FormDLayout"  Margin="0,0,0,0" BackgroundColor="White"   HasShadow="True" BorderColor="#bfbfbf"  IsVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            <StackLayout>
+                                                <Grid RowSpacing="15"  ColumnSpacing="15" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="25" />
+                                                        <RowDefinition Height="1" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="50" />
+                                                        <ColumnDefinition Width="120" />
+                                                        <ColumnDefinition Width="70" />
+                                                        <ColumnDefinition Width="30" />
+                                                        <ColumnDefinition Width="1*" />
+                                                        <ColumnDefinition Width="1*" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <BoxView Grid.Row="1" BackgroundColor="Gray" Grid.Column="0"   Grid.ColumnSpan="6"/>
+
+                                                    <Label Text="A1" Grid.Row="2" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="A2" Grid.Row="3" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="A3" Grid.Row="4" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="A4" Grid.Row="5" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="A5" Grid.Row="6" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="A6" Grid.Row="7" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="A7" Grid.Row="8" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="A8" Grid.Row="9" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+                                                    
+                                                    <Label Text="Sign" Grid.Row="0" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Missing" Grid.Row="2" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Position" Grid.Row="3" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Not Visible/Fallen Over" Grid.Row="4" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Wrong Sign" Grid.Row="5" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Condition Unacceptable" Grid.Row="6" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Non-Conplient Sign Used" Grid.Row="7" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Sign too low" Grid.Row="8" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <locals:FrameRenders Grid.Row="9"  Grid.Column="1" BackgroundColor="white" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl TextColor="Black" Text="{Binding ActivityFor}"   ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default"  InputTransparent="false" />
+                                                    </locals:FrameRenders>
+
+
+                                                    <Label Text="For" Grid.Row="0" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="sign" Grid.Row="2" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="sign" Grid.Row="3" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="sign" Grid.Row="4" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="sign" Grid.Row="5" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="sign" Grid.Row="6" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="sign" Grid.Row="7" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="support" Grid.Row="8" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="sign" Grid.Row="9" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                    <Label Text="w%" Grid.Row="0" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="2" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="3" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="4" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="5" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="6" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="7" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="8" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="9" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                    <Label Text="Tally box" Grid.Row="0" Grid.Column="4"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <locals:FrameRenders Grid.Row="2"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl  Text="{Binding A1tallyBox}"  IsEnabled="{Binding CanSave}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="3"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl  Text="{Binding A2tallyBox}" IsEnabled="{Binding CanSave}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="4"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding A3tallyBox}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="5"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding A4tallyBox}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="6"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding A5tallyBox}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="7"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding A6tallyBox}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="8"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}"  Text="{Binding A7tallyBox}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="9"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}"  Text="{Binding A8tallyBox}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                  <Label Text="Total" Grid.Row="0" Grid.Column="5"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <locals:FrameRenders Grid.Row="2"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}"  Text="{Binding A1total}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="false" />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="3"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding A2total}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="4"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding A3total}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="5"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}"  Text="{Binding A4total}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="6"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}"  Text="{Binding A5total}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="7"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}"  Text="{Binding A6total}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="8"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}"  Text="{Binding A7total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="9"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}"  Text="{Binding A8total}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Frame>
+
+
+
+
+
+                                        <Frame BackgroundColor="#f2f2f2" HasShadow="True" BorderColor="#e6e6e6">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image x:Name="formssToggleImage" Source="RoundedAddIcon.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Start" HorizontalOptions="Start">
+                                                </Image>
+                                                <Label Text="Delineation" Margin="10,0,0,0" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+
+                                                </Label>
+                                            </StackLayout>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference FormssDLayout}"/>
+                                                <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference formssToggleImage}"/>
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+
+                                        <Frame x:Name="FormssDLayout"  Margin="0,0,0,0" BackgroundColor="White"   HasShadow="True" BorderColor="#bfbfbf"  IsVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            <StackLayout>
+                                                <Grid RowSpacing="15"  ColumnSpacing="15" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="25" />
+                                                        <RowDefinition Height="1" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+                                                        <RowDefinition Height="45" />
+
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="50" />
+                                                        <ColumnDefinition Width="120" />
+                                                        <ColumnDefinition Width="70" />
+                                                        <ColumnDefinition Width="30" />
+                                                        <ColumnDefinition Width="1*" />
+                                                        <ColumnDefinition Width="1*" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <BoxView Grid.Row="1" BackgroundColor="Gray" Grid.Column="0"   Grid.ColumnSpan="6"/>
+
+                                                    <Label Text="B1" Grid.Row="2" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="B2" Grid.Row="3" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="B3" Grid.Row="4" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="B4" Grid.Row="5" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="B5" Grid.Row="6" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="B6" Grid.Row="7" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="B7" Grid.Row="8" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="B8" Grid.Row="9" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                    <Label Text="Delineation" Grid.Row="0" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Missing/ineffective at Leading Taper" Grid.Row="2" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Missing/ineffective at Trailing Taper" Grid.Row="3" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Spacing in Taper" Grid.Row="4" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Spacing in Lanes" Grid.Row="5" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Ineffective delineation along lanes" Grid.Row="6" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Missing delineation along lanes" Grid.Row="7" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Condition unacceptable" Grid.Row="8" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="Using non compliant devices" Grid.Row="9" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                    <Label Text="For" Grid.Row="0" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="device" Grid.Row="2" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="device" Grid.Row="3" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="device" Grid.Row="4" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="device" Grid.Row="5" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="device" Grid.Row="6" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="device" Grid.Row="7" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="device" Grid.Row="8" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="device" Grid.Row="9" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                    <Label Text="w%" Grid.Row="0" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="2" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="3" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="4" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="5" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="6" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="7" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="8" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <Label Text="5" Grid.Row="9" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                    <Label Text="Tally box" Grid.Row="0" Grid.Column="4"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <locals:FrameRenders Grid.Row="2"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B1tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="3"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B2tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="4"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B3tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="5"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B4tallyBox}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="6"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B5tallyBox}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="7"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B6tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="8"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B7tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="9"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B8tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+
+
+
+                                                    <Label Text="Total" Grid.Row="0" Grid.Column="5"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                    <locals:FrameRenders Grid.Row="2"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B1total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="3"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B2total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="4"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B3total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"/>
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="5"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black">
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B4total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="6"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B5total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="7"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B6total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="8"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B7total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                    </locals:FrameRenders>
+                                                    <locals:FrameRenders Grid.Row="9"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                        <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding B8total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  />
+                                                    </locals:FrameRenders>
+                                                </Grid>
+                                            </StackLayout>
+
+                                        </Frame>
+
+
+
+                                        <StackLayout>
+                                            <Frame BackgroundColor="#f2f2f2" HasShadow="True" BorderColor="#e6e6e6">
+                                                <StackLayout Orientation="Horizontal">
+
+                                                    <Image x:Name="labourToggleImage" Source="RoundedAddIcon.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,0,0,0" >
+
+                                                    </Image>
+
+                                                    <Label Text="Pedestrains/Cyclists" FontSize="Large" Margin="10,0,0,0" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" >
+
+                                                    </Label>
+                                                </StackLayout>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference Toggle1}"/>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference labourToggleImage}"/>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+                                        </StackLayout>
+
+                                        <StackLayout>
+
+                                            <Frame x:Name="Toggle1" BackgroundColor="White" BorderColor="#d9d9d9" HasShadow="True" CornerRadius="5" Grid.Row="1" Margin="0,0,0,0"  IsVisible="false" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <StackLayout>
+                                                    <Grid RowSpacing="15"  ColumnSpacing="15" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="25" />
+                                                            <RowDefinition Height="1" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            
+
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="120" />
+                                                            <ColumnDefinition Width="70" />
+                                                            <ColumnDefinition Width="30" />
+                                                            <ColumnDefinition Width="1*" />
+                                                            <ColumnDefinition Width="1*" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <BoxView Grid.Row="1" BackgroundColor="Gray" Grid.Column="0"   Grid.ColumnSpan="6"/>
+
+                                                        <Label Text="C1" Grid.Row="2" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="C2" Grid.Row="3" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                       
+
+                                                        <Label Text="Pedestrains/Cyclists" Grid.Row="0" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Inadequate provision for pedestrains" Grid.Row="2" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Inadequate provision for cyclists" Grid.Row="3" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                       
+
+                                                        <Label Text="For" Grid.Row="0" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="feature" Grid.Row="2" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="feature" Grid.Row="3" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                       
+                                                        <Label Text="w%" Grid.Row="0" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="10" Grid.Row="2" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="10" Grid.Row="3" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                       
+
+                                                        <Label Text="Tally box" Grid.Row="0" Grid.Column="4"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <locals:FrameRenders Grid.Row="2"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding C1tallyBox}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="3"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding C2tallyBox}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"   />
+                                                        </locals:FrameRenders>
+                                                       
+
+
+                                                        <Label Text="Total" Grid.Row="0" Grid.Column="5"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <locals:FrameRenders Grid.Row="2"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding C1total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default"  />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="3"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding C2total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default" />
+                                                        </locals:FrameRenders>
+                                                       
+                                                    </Grid>
+                                                </StackLayout>
+
+                                            </Frame>
+
+
+
+
+
+                                            <Frame BackgroundColor="#f2f2f2" HasShadow="True" BorderColor="#e6e6e6">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image x:Name="formToggleImages" Source="RoundedAddIcon.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Start" HorizontalOptions="Start">
+                                                    </Image>
+                                                    <Label Text="Crews and Equipment" Margin="10,0,0,0" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+
+                                                    </Label>
+                                                </StackLayout>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference FormDLayouts}"/>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference formToggleImages}"/>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+
+                                            <Frame x:Name="FormDLayouts"  Margin="0,0,0,0" BackgroundColor="White"   HasShadow="True" BorderColor="#bfbfbf"  IsVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <StackLayout>
+                                                    <Grid RowSpacing="15"  ColumnSpacing="15" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="35" />
+                                                            <RowDefinition Height="1" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="120" />
+                                                            <ColumnDefinition Width="70" />
+                                                            <ColumnDefinition Width="30" />
+                                                            <ColumnDefinition Width="1*" />
+                                                            <ColumnDefinition Width="1*" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <BoxView Grid.Row="1" BackgroundColor="Gray" Grid.Column="0"   Grid.ColumnSpan="6"/>
+
+                                                        <Label Text="D1" Grid.Row="2" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="D2" Grid.Row="3" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="D3" Grid.Row="4" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="D4" Grid.Row="5" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="D5" Grid.Row="6" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="D6" Grid.Row="7" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="D7" Grid.Row="8" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="D8" Grid.Row="9" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="Crews and Equipment" Grid.Row="0" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Crew Supervison not on Site" Grid.Row="2" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Traffic Controller not on Site" Grid.Row="3" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Working in Live lanes" Grid.Row="4" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Safety Zone Compromised" Grid.Row="5" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Low visibility of PPE" Grid.Row="6" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="No Handhled beacons/Flags/Signs" Grid.Row="7" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="No Hazard lights/beacons" Grid.Row="8" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Unsafe/illegal parking of equipment" Grid.Row="9" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+
+                                                        <Label Text="For" Grid.Row="0" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Crew" Grid.Row="2" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Crew" Grid.Row="3" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Crew" Grid.Row="4" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Crew" Grid.Row="5" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Crew" Grid.Row="6" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Crew" Grid.Row="7" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Vehicle" Grid.Row="8" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="unit" Grid.Row="9" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="w%" Grid.Row="0" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="10" Grid.Row="2" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="10" Grid.Row="3" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="15" Grid.Row="4" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="10" Grid.Row="5" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="5" Grid.Row="6" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="5" Grid.Row="7" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="5" Grid.Row="8" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="5" Grid.Row="9" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="Tally box" Grid.Row="0" Grid.Column="4"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <locals:FrameRenders Grid.Row="2"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D1tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="3"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D2tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="4"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D3tallyBox}"    TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="5"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D4tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="6"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D5tallyBox}"    TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="7"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D6tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="8"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D7tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="9"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D8tallyBox}"    TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+
+
+
+                                                        <Label Text="Total" Grid.Row="0" Grid.Column="5"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <locals:FrameRenders Grid.Row="2"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D1total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="3"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D2total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="4"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D3total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="5"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D4total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="6"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D5total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="7"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D6total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="8"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D7total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="9"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding D8total}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+
+
+
+
+
+
+
+                                            <Frame BackgroundColor="#f2f2f2" HasShadow="True" BorderColor="#e6e6e6">
+                                                <StackLayout Orientation="Horizontal">
+
+                                                    <Image x:Name="labourToggleImagess" Source="RoundedAddIcon.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,0,0,0" >
+
+                                                    </Image>
+
+                                                    <Label Text="Cone and Barriers" FontSize="Large" Margin="10,0,0,0" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" >
+
+                                                    </Label>
+                                                </StackLayout>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference Toggle1ss}"/>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference labourToggleImagess}"/>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+
+                                            <Frame x:Name="Toggle1ss" BackgroundColor="White" BorderColor="#d9d9d9" HasShadow="True" CornerRadius="5" Grid.Row="1" Margin="0,0,0,0"  IsVisible="false" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <StackLayout>
+                                                    <Grid RowSpacing="15"  ColumnSpacing="15" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="25" />
+                                                            <RowDefinition Height="1" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+
+
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="120" />
+                                                            <ColumnDefinition Width="70" />
+                                                            <ColumnDefinition Width="30" />
+                                                            <ColumnDefinition Width="1*" />
+                                                            <ColumnDefinition Width="1*" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <BoxView Grid.Row="1" BackgroundColor="Gray" Grid.Column="0"   Grid.ColumnSpan="6"/>
+
+                                                        <Label Text="E1" Grid.Row="2" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="E2" Grid.Row="3" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="Cone and Barriers" Grid.Row="0" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Barriers defects/missing/non compliant" Grid.Row="2" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Traffic cones defects/missing/non compliant" Grid.Row="3" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="For" Grid.Row="0" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="device" Grid.Row="2" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="device" Grid.Row="3" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+                                                        <Label Text="w%" Grid.Row="0" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="15" Grid.Row="2" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="15" Grid.Row="3" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="Tally box" Grid.Row="0" Grid.Column="4"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <locals:FrameRenders Grid.Row="2"  Grid.Column="4" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding E1tallyBox }"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="3"  Grid.Column="4" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding E2tallyBox}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+
+
+
+                                                        <Label Text="Total" Grid.Row="0" Grid.Column="5"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <locals:FrameRenders Grid.Row="2"  Grid.Column="5" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding E1total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="3"  Grid.Column="5" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding E2total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+
+                                                    </Grid>
+                                                </StackLayout>
+
+                                            </Frame>
+
+
+
+
+
+
+                                            <Frame BackgroundColor="#f2f2f2" HasShadow="True" BorderColor="#e6e6e6">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image x:Name="formToggleeImage" Source="RoundedAddIcon.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Start" HorizontalOptions="Start">
+                                                    </Image>
+                                                    <Label Text="Truck Mounted Attenuator" Margin="10,0,0,0" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+
+                                                    </Label>
+                                                </StackLayout>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference FormdDLayout}"/>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference formToggleeImage}"/>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+
+                                            <Frame x:Name="FormdDLayout"  Margin="0,0,0,0" BackgroundColor="White"   HasShadow="True" BorderColor="#bfbfbf"  IsVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <StackLayout>
+                                                    <Grid RowSpacing="15"  ColumnSpacing="15" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="25" />
+                                                            <RowDefinition Height="1" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="120" />
+                                                            <ColumnDefinition Width="70" />
+                                                            <ColumnDefinition Width="30" />
+                                                            <ColumnDefinition Width="1*" />
+                                                            <ColumnDefinition Width="1*" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <BoxView Grid.Row="1" BackgroundColor="Gray" Grid.Column="0"   Grid.ColumnSpan="6"/>
+
+                                                        <Label Text="F1" Grid.Row="2" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="F2" Grid.Row="3" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="F3" Grid.Row="4" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="F4" Grid.Row="5" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="F5" Grid.Row="6" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="F6" Grid.Row="7" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="F7" Grid.Row="8" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="Truck Mounted Attenuator" Grid.Row="0" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="TMA Incorrect Location" Grid.Row="2" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Variable Message Sign(VMS)non compliant" Grid.Row="3" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Advanced Warning VMS missing" Grid.Row="4" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Arrow Board non compliant" Grid.Row="5" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="TMA missing or non compliant" Grid.Row="6" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Tail pilot vehicle missing/non compliant" Grid.Row="7" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Lead pilot vehicle missing/non compliant" Grid.Row="8" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                      
+
+                                                        <Label Text="For" Grid.Row="0" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="device" Grid.Row="2" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="device" Grid.Row="3" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="device" Grid.Row="4" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="device" Grid.Row="5" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="device" Grid.Row="6" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="device" Grid.Row="7" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="device" Grid.Row="8" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="w%" Grid.Row="0" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="20" Grid.Row="2" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="10" Grid.Row="3" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="25" Grid.Row="4" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="15" Grid.Row="5" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="25" Grid.Row="6" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="25" Grid.Row="7" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="15" Grid.Row="8" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="Tally box" Grid.Row="0" Grid.Column="4"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <locals:FrameRenders Grid.Row="2"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F1tallyBox }"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="3"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F2tallyBox }"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="4"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F3tallyBox }"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="5"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F4tallyBox }"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="6"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F5tallyBox }"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="7"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F6tallyBox }"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="8"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F7tallyBox }"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                       
+
+
+
+                                                        <Label Text="Total" Grid.Row="0" Grid.Column="5"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <locals:FrameRenders Grid.Row="2"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F1total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="3"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F2total }"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="4"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F3total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="5"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F4total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="6"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F5total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="7"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F6total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="8"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding F7total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                            
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+
+
+
+
+
+
+
+
+                                            <Frame BackgroundColor="#f2f2f2" HasShadow="True" BorderColor="#e6e6e6">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image x:Name="formmsToggleImage" Source="RoundedAddIcon.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Start" HorizontalOptions="Start">
+                                                    </Image>
+                                                    <Label Text="Miscellaneous" Margin="10,0,0,0" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+
+                                                    </Label>
+                                                </StackLayout>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference FormDDDLayout}"/>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference formmsToggleImage}"/>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+
+                                            <Frame x:Name="FormDDDLayout"  Margin="0,0,0,0" BackgroundColor="White"   HasShadow="True" BorderColor="#bfbfbf"  IsVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <StackLayout>
+                                                    <Grid RowSpacing="15"  ColumnSpacing="15" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="25" />
+                                                            <RowDefinition Height="1" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+                                                            <RowDefinition Height="45" />
+
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50" />
+                                                            <ColumnDefinition Width="120" />
+                                                            <ColumnDefinition Width="70" />
+                                                            <ColumnDefinition Width="30" />
+                                                            <ColumnDefinition Width="1*" />
+                                                            <ColumnDefinition Width="1*" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <BoxView Grid.Row="1" BackgroundColor="Gray" Grid.Column="0"   Grid.ColumnSpan="6"/>
+
+                                                        <Label Text="G1" Grid.Row="2" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="G2" Grid.Row="3" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="G3" Grid.Row="4" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="G4" Grid.Row="5" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="G5" Grid.Row="6" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="G6" Grid.Row="7" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="G7" Grid.Row="8" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="G8" Grid.Row="9" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="G9" Grid.Row="10" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="G10" Grid.Row="11" Grid.Column="0"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="Miscellaneous" Grid.Row="0" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Unacceptable surface condition(diversion)" Grid.Row="2" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Insufficient lane widths" Grid.Row="3" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Significant delays observed" Grid.Row="4" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Parking/stopping features not relocated" Grid.Row="5" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Inadequate site access" Grid.Row="6" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Incorrect use of temporary road marking" Grid.Row="7" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Approved TMP not sighted" Grid.Row="8" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Non compliant to approved TMP" Grid.Row="9" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Devices not removed after completion of work" Grid.Row="10" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <locals:FrameRenders Grid.Row="11"  Grid.Column="1" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding ActivityName}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default"  InputTransparent="false" />
+                                                        </locals:FrameRenders>
+
+
+                                                        <Label Text="For" Grid.Row="0" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="feature" Grid.Row="2" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="feature" Grid.Row="3" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="feature" Grid.Row="4" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="feature" Grid.Row="5" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="access" Grid.Row="6" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="feature" Grid.Row="7" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="TMP" Grid.Row="8" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="TMP" Grid.Row="9" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Overall" Grid.Row="10" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="Overall" Grid.Row="11" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="w%" Grid.Row="0" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="5" Grid.Row="2" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="5" Grid.Row="3" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="5" Grid.Row="4" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="5" Grid.Row="5" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="10" Grid.Row="6" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="5" Grid.Row="7" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="15" Grid.Row="8" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="10" Grid.Row="9" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="10" Grid.Row="10" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <Label Text="5" Grid.Row="11" Grid.Column="3"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="Tally box" Grid.Row="0" Grid.Column="4"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <locals:FrameRenders Grid.Row="2"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G1tallyBox }"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="3"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G2tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="4"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G3tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="5"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G4tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="6"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G5tallyBox}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="7"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G6tallyBox}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="8"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G7tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="9"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G8tallyBox}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="10"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G9tallyBox}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="11"  Grid.Column="4" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G10tallyBox}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+
+
+
+                                                        <Label Text="Total" Grid.Row="0" Grid.Column="5"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+                                                        <locals:FrameRenders Grid.Row="2"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}"  Text="{Binding G1total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="3"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G2total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="4"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G3total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="5"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G4total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="6"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G5total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="7"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G6total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="8"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G7total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="9"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G8total}"   TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="10"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}" Text="{Binding G9total}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                        <locals:FrameRenders Grid.Row="11"  Grid.Column="5" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl IsEnabled="{Binding CanSave}"  Text="{Binding G10total}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Numeric"  InputTransparent="False" />
+                                                        </locals:FrameRenders>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+
+
+
+
+
+
+                                            <Frame BackgroundColor="#f2f2f2" HasShadow="True" BorderColor="#e6e6e6">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image x:Name="formssTToggleImage" Source="RoundedAddIcon.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Start" HorizontalOptions="Start">
+                                                    </Image>
+                                                    <Label Text="Final Result" Margin="10,0,0,0" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+
+                                                    </Label>
+                                                </StackLayout>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference FormssDDLayout}"/>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference formssTToggleImage}"/>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+
+                                            <Frame x:Name="FormssDDLayout"  Margin="0,0,0,0" BackgroundColor="White"   HasShadow="True" BorderColor="#bfbfbf"  IsVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <StackLayout>
+                                                    <Grid RowSpacing="15"  ColumnSpacing="15" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="0.5*" />
+                                                            <ColumnDefinition Width="1*" />
+                                                            <ColumnDefinition Width="1*" />
+
+
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+
+
+                                                        <Label Text="Total" Grid.Row="2" Grid.Column="1"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+                                                        <locals:FrameRenders Grid.Row="3"   Grid.Column="1"  HeightRequest="40"  BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:EntryControl Text="{Binding Total}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default"   />
+                                                        </locals:FrameRenders>
+                                                        <Label Text="{Binding strDescStatus}"   Grid.Row="3" Grid.Column="2" FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="Satisfactory:20" Grid.Row="4" Grid.Column="1" FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+
+                                                        <Label Text="Needs Improvements:20 to 45" Grid.Row="4" Grid.Column="2"    FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+                                                      
+
+                                                        <Label Text="Dangerous:45" Grid.Row="4" Grid.Column="3"  FontSize="Medium" FontFamily="{StaticResource ProximaNovaRegularFont}" TextColor="Black" />
+
+                                                    </Grid>
+
+
+                                                </StackLayout>
+                                            </Frame>
+
+
+
+
+                                            <Frame BackgroundColor="#f2f2f2" HasShadow="True" BorderColor="#e6e6e6">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image x:Name="formssImaage" Source="RoundedAddIcon.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Start" HorizontalOptions="Start">
+                                                    </Image>
+                                                    <Label Text="Findings" Margin="10,0,0,0" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+
+                                                    </Label>
+                                                </StackLayout>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference FormssLayoout}"/>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference formssImaage}"/>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+
+                                            <Frame x:Name="FormssLayoout"  Margin="0,0,0,0" BackgroundColor="White"   HasShadow="True" BorderColor="#bfbfbf"  IsVisible="false" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <StackLayout>
+
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="0.1*"/>
+                                                            <RowDefinition Height="0.5*"/>
+
+                                                        </Grid.RowDefinitions>
+
+                                                        <locals:FrameRenders  Grid.Row="1" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:CustomEditor FontSize="16" IsEnabled="{Binding CanSave}" Text="{Binding Findings}"  BackgroundColor="White"    TextColor="Black"  Opacity="0.5" ></local:CustomEditor>
+                                                        </locals:FrameRenders>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+
+
+
+
+                                            <Frame BackgroundColor="#f2f2f2" HasShadow="True" BorderColor="#e6e6e6">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image x:Name="formssImmage" Source="RoundedAddIcon.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Start" HorizontalOptions="Start">
+                                                    </Image>
+                                                    <Label Text="Corrective Actions to be Taken" Margin="10,0,0,0" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+
+                                                    </Label>
+                                                </StackLayout>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference FormssLayyout}"/>
+                                                    <TapGestureRecognizer Command="{Binding ToggleCommand}" CommandParameter="{x:Reference formssImmage}"/>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+
+                                            <Frame x:Name="FormssLayyout"  Margin="0,0,0,0" BackgroundColor="White"   HasShadow="True" BorderColor="#bfbfbf"  IsVisible="false" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <StackLayout>
+
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="0.1*"/>
+                                                            <RowDefinition Height="0.5*"/>
+                                                            
+                                                        </Grid.RowDefinitions>
+
+                                                        <locals:FrameRenders  Grid.Row="1" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                            <local:CustomEditor FontSize="16" IsEnabled="{Binding CanSave}" Text="{Binding CorrectiveActions}"  BackgroundColor="White"    TextColor="Black"  Opacity="0.5" ></local:CustomEditor>
+                                                        </locals:FrameRenders>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+
+
+                                            <Frame>
+                                                <StackLayout>
+                                                    <StackLayout  Margin="5,0,5,0" BackgroundColor="White">
+                                                        <Frame  BackgroundColor="White" BorderColor="#f2f2f2" CornerRadius="5"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                            <StackLayout>
+                                                                <Frame Margin="0,0,0,40" HasShadow="True" BorderColor="#bfbfbf">
+                                                                    <StackLayout>
+                                                                        <Label Text="Audited By:" Opacity="0.8" TextColor="Black" FontSize="Large" FontAttributes="Bold" Margin="15,0,0,0"/>
+                                                                        <StackLayout Orientation="Horizontal">
+                                                                            <Label Text="           Signature" Opacity="0.8" TextColor="Black" FontSize="Medium" FontAttributes="Bold" Margin="0,-5,0,0"/>
+
+                                                                        </StackLayout>
+
+                                                                        <Button Text="Redo"  IsVisible="false" Command="{Binding inspredosign}"  BackgroundColor="White"  CornerRadius="10"  Margin="0,-25,55,0" BorderWidth="2" BorderColor="#1D2D50" TextColor="#1D2D50" HorizontalOptions="End" VerticalOptions="End"></Button>
+                                                                        <!--IsVisible="{Binding CanSave}"-->
+                                                                        <Frame Margin="50,0,50,0" CornerRadius="15" HasShadow="True" BackgroundColor="White"  BorderColor="#bfbfbf">
+                                                                            <locals:FrameRenders  BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+
+                                                                                <forms:SignaturePadView x:Name="InspPadView" IsEnabled="{Binding CanSave}" BackgroundImage="{Binding InspSign}" InputTransparent="{Binding NotToEdit}" HeightRequest="200" WidthRequest="50" Margin="0,0,0,-28" BackgroundColor="White" StrokeColor="Black"  StrokeWidth="2"  />
+                                                                            </locals:FrameRenders>
+                                                                            <!--<acr:SignaturePadView x:Name="padView" HeightRequest="320"  WidthRequest="240" BackgroundColor="White" CaptionText="Caption This" ClearText="Clear Me!"  PromptText="Prompt Here" StrokeWidth="2" />-->
+
+                                                                        </Frame>
+
+
+
+                                                                        <Grid RowSpacing="15"  ColumnSpacing="15" >
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                               
+
+
+                                                                            </Grid.RowDefinitions>
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="Auto" />
+                                                                                <ColumnDefinition Width="1*" />
+
+                                                                                <ColumnDefinition Width="1*" />
+                                                                                <ColumnDefinition Width="1*" />
+                                                                                <ColumnDefinition Width="1.25*" />
+                                                                                <ColumnDefinition Width="Auto" />
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Label Text="User ID" FontSize="Medium" Grid.Row="0" Grid.Column="1" TextColor="Black" Opacity="0.8"   FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+
+
+                                                                            <locals:FrameRenders  Grid.Row="1"  Grid.Column="1" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+
+                                                                                <local:ExtendedPicker IsEnabled="False" ItemsSource="{Binding DDInspUserListListItems}" ItemDisplayBinding="{Binding Text}"  SelectedIndex="{Binding SelectedInspIndex}" Title="Select User" x:Name="insppicker"  InputTransparent="{Binding NotToEdit}"  ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"   HorizontalOptions="FillAndExpand" TextColor="Gray" />
+                                                                            </locals:FrameRenders>
+
+                                                                            <Label Text="Name" FontSize="Medium" Grid.Row="0" Grid.Column="2" TextColor="Black" Opacity="0.8"   FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+
+
+                                                                            <locals:FrameRenders Grid.Row="1"  Grid.Column="2" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                                                <local:EntryControl Text="{Binding InspName}" InputTransparent="{Binding IsInspNameEnabled}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default" IsEnabled="{Binding IsInspNameEnabled}" />
+                                                                            </locals:FrameRenders>
+
+
+
+                                                                            <Label Text="Designation" FontSize="Medium" TextColor="Black" Opacity="0.8" Grid.Row="0" Grid.Column="3"    FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+                                                                            <locals:FrameRenders Grid.Row="1"  Grid.Column="3" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                                                <local:EntryControl Text="{Binding InspDesignation}" InputTransparent="{Binding IsInspNameEnabled}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default" IsEnabled="{Binding IsInspNameEnabled}" />
+                                                                            </locals:FrameRenders>
+
+
+
+                                                                            <Label Text="Date (DD-MM-YYYY)" FontSize="Medium" TextColor="Black" Opacity="0.8" Grid.Row="0" Grid.Column="4"    FontFamily="{StaticResource ProximaNovaRegularFont}" />
+                                                                            <locals:FrameRenders Grid.Row="1"  Grid.Column="4" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+
+                                                                                <local:CustomDatePicker IsEnabled="False" Format="dd-MM-yyyy" NullText="dd/mm/yyyy" NullableDate="{Binding InspDate}" InputTransparent="{Binding NotToEdit}" BackgroundColor="White"    VerticalOptions="CenterAndExpand" FontSize="16"  HorizontalOptions="FillAndExpand" TextColor="Gray"   />
+                                                                            </locals:FrameRenders>
+                                                                        </Grid>
+                                                                    </StackLayout>
+                                                                </Frame>
+
+                                                                <!--<BoxView WidthRequest="100" Margin="0,-30,0,0" HeightRequest="1" BackgroundColor="Black"></BoxView>-->
+
+
+                                                                <Frame Margin="0,-10,0,40" HasShadow="True" BorderColor="#bfbfbf">
+                                                                    <StackLayout>
+                                                                        <Label Text="Witnessed By (1)" Opacity="0.8" FontSize="Large" TextColor="Black" FontAttributes="Bold" Margin="15,0,0,10"/>
+                                                                        <StackLayout Orientation="Horizontal">
+                                                                            <Label Text="          Signature" Opacity="0.8" TextColor="Black" FontSize="Medium" FontAttributes="Bold" Margin="0,-5,0,0"/>
+
+                                                                        </StackLayout>
+                                                                        <Button Text="Redo" IsVisible="false"  BackgroundColor="White"  Command="{Binding verredosign}" CornerRadius="10"  Margin="0,-25,55,0" BorderWidth="2" BorderColor="#1D2D50" TextColor="#1D2D50" HorizontalOptions="End" VerticalOptions="End"></Button>
+                                                                        <!--IsVisible="{Binding CanSave}"-->
+                                                                        <Frame Margin="50,0,50,0" CornerRadius="15" HasShadow="True" BackgroundColor="White"  BorderColor="#bfbfbf">
+                                                                            <locals:FrameRenders  BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+
+                                                                                <forms:SignaturePadView x:Name="VerPadView" IsEnabled="{Binding CanSave}" BackgroundImage="{Binding VerSign}" InputTransparent="{Binding NotToEdit}" HeightRequest="200" WidthRequest="50" Margin="0,0,0,-28" BackgroundColor="White" StrokeColor="Black"  StrokeWidth="2" />
+                                                                            </locals:FrameRenders>
+
+                                                                            <!--<acr:SignaturePadView x:Name="vpadView" HeightRequest="320"  WidthRequest="240" BackgroundColor="White" CaptionText="Caption This" CaptionTextColor="Black" ClearText="Clear Me!"  ClearTextColor="Red"></acr:SignaturePadView>-->
+
+                                                                        </Frame>
+
+
+                                                                        <Grid RowSpacing="15"  ColumnSpacing="15" >
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+
+
+                                                                            </Grid.RowDefinitions>
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="Auto" />
+                                                                                <ColumnDefinition Width="1*" />
+                                                                                <ColumnDefinition Width="1*" />
+                                                                                <ColumnDefinition Width="1*" />
+                                                                                <ColumnDefinition Width="1.25*" />
+                                                                                <ColumnDefinition Width="Auto" />
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Label Text="User ID" FontSize="Medium" Grid.Row="0" Grid.Column="1" TextColor="Black" Opacity="0.8"   FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+
+                                                                            <locals:FrameRenders  Grid.Row="1"  Grid.Column="1" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+
+                                                                                <local:ExtendedPicker Title="Select Users" IsEnabled="{Binding CanSave}" ItemsSource="{Binding DDVerUserListListItems}" ItemDisplayBinding="{Binding Text}"  SelectedIndex="{Binding SelectedVerIndex}"  InputTransparent="{Binding NotToEdit}"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"   HorizontalOptions="FillAndExpand" TextColor="Gray" />
+                                                                            </locals:FrameRenders>
+
+
+                                                                            <Label Text="Name" FontSize="Medium" TextColor="Black" Opacity="0.8" Grid.Row="0" Grid.Column="2"    FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+
+                                                                            <locals:FrameRenders Grid.Row="1"  Grid.Column="2" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                                                <local:EntryControl Text="{Binding VerName}" InputTransparent="{Binding IsVerNameEnabled}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default"  IsEnabled="{Binding IsVerNameEnabled}" />
+                                                                            </locals:FrameRenders>
+
+
+                                                                            <Label Text="Designation" FontSize="Medium" TextColor="Black" Opacity="0.8" Grid.Row="0" Grid.Column="3"   FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+                                                                            <locals:FrameRenders Grid.Row="1"  Grid.Column="3" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                                                <local:EntryControl Text="{Binding VerDesignation}" InputTransparent="{Binding IsVerNameEnabled}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}" Keyboard="Default"  IsEnabled="{Binding IsVerNameEnabled}" />
+                                                                            </locals:FrameRenders>
+
+
+
+                                                                            <!--<local:ExtendedPicker   Grid.Row="1"  Grid.Column="2" ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand" FontSize="Medium"  HorizontalOptions="FillAndExpand" TextColor="Gray" />-->
+
+                                                                            <Label Text="Date (DD-MM-YYYY)" FontSize="Medium" TextColor="Black" Opacity="0.8" Grid.Row="0" Grid.Column="4"    FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+
+                                                                            <locals:FrameRenders Grid.Row="1"  Grid.Column="4" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+
+                                                                                <local:CustomDatePicker IsEnabled="{Binding CanSave}"  NullText="dd/mm/yyyy" NullableDate="{Binding VerDate}" InputTransparent="{Binding NotToEdit}" Format="dd-MM-yyyy" BackgroundColor="White"   VerticalOptions="CenterAndExpand" FontSize="16"  HorizontalOptions="FillAndExpand" TextColor="Gray"   />
+                                                                            </locals:FrameRenders>
+                                                                            <!--<local:ExtendedPicker    Grid.Row="1"  Grid.Column="3" ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand" FontSize="Medium"  HorizontalOptions="FillAndExpand" TextColor="Gray" />-->
+
+
+                                                                        </Grid>
+
+                                                                    </StackLayout>
+                                                                </Frame>
+
+
+                                                                <Frame Margin="0,-10,0,40" HasShadow="True" BorderColor="#bfbfbf">
+                                                                    <StackLayout>
+                                                                        <Label Text="Witnessed By (2)" Opacity="0.8" FontSize="Large" TextColor="Black" FontAttributes="Bold" Margin="15,0,0,10"/>
+                                                                        <StackLayout Orientation="Horizontal">
+                                                                            <Label Text="          Signature" Opacity="0.8" TextColor="Black" FontSize="Medium" FontAttributes="Bold" Margin="0,-5,0,0"/>
+
+                                                                        </StackLayout>
+                                                                        <Button Text="Redo" IsVisible="false"  BackgroundColor="White"  Command="{Binding verredosign}" CornerRadius="10"  Margin="0,-25,55,0" BorderWidth="2" BorderColor="#1D2D50" TextColor="#1D2D50" HorizontalOptions="End" VerticalOptions="End"></Button>
+                                                                        <!--IsVisible="{Binding CanSave}"-->
+                                                                        <Frame Margin="50,0,50,0" CornerRadius="15" HasShadow="True" BackgroundColor="White"  BorderColor="#bfbfbf">
+                                                                            <locals:FrameRenders  BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+
+                                                                                <forms:SignaturePadView x:Name="VerPadView1" IsEnabled="{Binding CanSave}" BackgroundImage="{Binding VerSign1}" InputTransparent="{Binding NotToEdit}" HeightRequest="200" WidthRequest="50" Margin="0,0,0,-28" BackgroundColor="White" StrokeColor="Black"  StrokeWidth="2" />
+                                                                            </locals:FrameRenders>
+
+                                                                            <!--<acr:SignaturePadView x:Name="vpadView" HeightRequest="320"  WidthRequest="240" BackgroundColor="White" CaptionText="Caption This" CaptionTextColor="Black" ClearText="Clear Me!"  ClearTextColor="Red"></acr:SignaturePadView>-->
+
+                                                                        </Frame>
+
+
+                                                                        <Grid RowSpacing="15"  ColumnSpacing="15" >
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+
+
+                                                                            </Grid.RowDefinitions>
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="Auto" />
+                                                                                <ColumnDefinition Width="1*" />
+                                                                                <ColumnDefinition Width="1*" />
+                                                                                <ColumnDefinition Width="1*" />
+                                                                                <ColumnDefinition Width="1.25*" />
+                                                                                <ColumnDefinition Width="Auto" />
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Label Text="User ID" FontSize="Medium" Grid.Row="0" Grid.Column="1" TextColor="Black" Opacity="0.8"   FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+
+                                                                            <locals:FrameRenders  Grid.Row="1"  Grid.Column="1" BackgroundColor="White" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+
+                                                                                <local:ExtendedPicker Title="Select Users" IsEnabled="{Binding CanSave}" ItemsSource="{Binding DDVerUserListListItems1}" ItemDisplayBinding="{Binding Text}"  SelectedIndex="{Binding SelectedVerIndex1}"  InputTransparent="{Binding NotToEdit}"   ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand"   HorizontalOptions="FillAndExpand" TextColor="Gray" />
+                                                                            </locals:FrameRenders>
+
+
+                                                                            <Label Text="Name" FontSize="Medium" TextColor="Black" Opacity="0.8" Grid.Row="0" Grid.Column="2"    FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+
+                                                                            <locals:FrameRenders Grid.Row="1"  Grid.Column="2" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                                                <local:EntryControl Text="{Binding VerName1}" InputTransparent="{Binding IsVerNameEnabled}"  TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}"  Keyboard="Default"  IsEnabled="{Binding IsVerNameEnabled}" />
+                                                                            </locals:FrameRenders>
+
+
+                                                                            <Label Text="Designation" FontSize="Medium" TextColor="Black" Opacity="0.8" Grid.Row="0" Grid.Column="3"   FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+                                                                            <locals:FrameRenders Grid.Row="1"  Grid.Column="3" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+                                                                                <local:EntryControl Text="{Binding VerDesignation1}" InputTransparent="{Binding IsVerNameEnabled}" TextColor="Black" ClassId="ClassDetails" FontFamily="{StaticResource ProximaNovaRegularFont}" Keyboard="Default"  IsEnabled="{Binding IsVerNameEnabled}" />
+                                                                            </locals:FrameRenders>
+
+
+
+                                                                            <!--<local:ExtendedPicker   Grid.Row="1"  Grid.Column="2" ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand" FontSize="Medium"  HorizontalOptions="FillAndExpand" TextColor="Gray" />-->
+
+                                                                            <Label Text="Date (DD-MM-YYYY)" FontSize="Medium" TextColor="Black" Opacity="0.8" Grid.Row="0" Grid.Column="4"    FontFamily="{StaticResource ProximaNovaRegularFont}"  />
+
+                                                                            <locals:FrameRenders Grid.Row="1"  Grid.Column="4" BackgroundColor="#f2f2f2" FrameCornerRadius="7"   IsClippedToBounds="True" Padding="0,0,0,0"  ColorName="LightGray"    BorderColor="Black" >
+
+                                                                                <local:CustomDatePicker IsEnabled="{Binding CanSave}"  NullText="dd/mm/yyyy" NullableDate="{Binding VerDate1}" InputTransparent="{Binding NotToEdit}" Format="dd-MM-yyyy" BackgroundColor="White"   VerticalOptions="CenterAndExpand" FontSize="16"  HorizontalOptions="FillAndExpand" TextColor="Gray"   />
+                                                                            </locals:FrameRenders>
+                                                                            <!--<local:ExtendedPicker    Grid.Row="1"  Grid.Column="3" ClassId ="ClassPickGrey"  VerticalOptions="CenterAndExpand" FontSize="Medium"  HorizontalOptions="FillAndExpand" TextColor="Gray" />-->
+
+
+                                                                        </Grid>
+
+                                                                    </StackLayout>
+                                                                </Frame>
+
+                                                            </StackLayout>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Frame>
+                                        </StackLayout>
+
+
+
+                                       
+                                    </StackLayout>
+                                
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+
+
+
+                    <StackLayout >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button Text="Cancel" Command="{Binding CancelAction}" TextColor="White"  Grid.Row="0" Grid.Column="1" FontSize="18" BackgroundColor="#1D2D50" CornerRadius="5" ></Button>
+
+                            <Button Text="Save" Command="{Binding SaveAction}" IsVisible="{Binding CanSave}" TextColor="White"  FontSize="18" Grid.Row="0" Grid.Column="2" BackgroundColor="#1D2D50" CornerRadius="5"></Button>
+
+                            <Button Text="Submit" Command="{Binding SubmitAction}" IsVisible="{Binding CanSave}" TextColor="White"  FontSize="18" Grid.Row="0" Grid.Column="3" BackgroundColor="#1D2D50" CornerRadius="5"></Button>
+                        </Grid>
+                    </StackLayout>
+
+                </StackLayout>
+
+
+            </ScrollView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
